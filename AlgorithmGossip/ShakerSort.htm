@@ -52,7 +52,7 @@
   
   
   
-  <title>Shaker 排序法 - 改良的氣泡排序</title>
+  <title>Shaker 排序法 - 改良的气泡排序</title>
 </head>
 
 
@@ -70,16 +70,16 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip:&nbsp;Shaker 排序法 - 改良的氣泡排序</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip:&nbsp;Shaker 排序法 - 改良的气泡排序</a></h1>
 
 
 
 
 
 
-<h2>說明</h2>
+<h2>说明</h2>
 
-請看看之前介紹過的氣泡排序法：<br>
+请看看之前介绍过的气泡排序法：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp; for(i = 0; i &lt; MAX-1 &amp;&amp; flag == 1; i++) { </span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
 
@@ -105,11 +105,11 @@
 
 <br>
 
-事實上這個氣泡排序法已經不是單純的氣泡排序了，它使用了旗標與右端左移兩個方法來改進排序的效能，而Shaker排序法使用到後面這個觀念進一步改良氣泡排序法。<br>
+事实上这个气泡排序法已经不是单纯的气泡排序了，它使用了旗标与右端左移两个方法来改进排序的效能，而Shaker排序法使用到后面这个观念进一步改良气泡排序法。<br>
 
 <h2>解法</h2>
 
-在上面的氣泡排序法中，交換的動作並不會一直進行至陣列的最後一個，而是會進行至MAX-i-1，所以排序的過程中，陣列右方排序好的元素會一直增加，使得左邊排序的次數逐漸減少，如我們的例子所示：<br>
+在上面的气泡排序法中，交换的动作并不会一直进行至阵列的最后一个，而是会进行至MAX-i-1，所以排序的过程中，阵列右方排序好的元素会一直增加，使得左边排序的次数逐渐减少，如我们的例子所示：<br>
 
 <br>
 
@@ -137,15 +137,15 @@
 
 <br>
 
-方括號括住的部份表示已排序完畢，Shaker排序使用了這個概念，如果讓左邊的元素也具有這樣的性質，讓左右兩邊的元素都能先排序完成，如此未排序的元素會集中在中間，由於左右兩邊同時排序，中間未排序的部份將會很快的減少。<br>
+方括号括住的部份表示已排序完毕，Shaker排序使用了这个概念，如果让左边的元素也具有这样的性质，让左右两边的元素都能先排序完成，如此未排序的元素会集中在中间，由于左右两边同时排序，中间未排序的部份将会很快的减少。<br>
 
 <br>
 
-方法就在於氣泡排序的雙向進行，先讓氣泡排序由左向右進行，再來讓氣泡排序由右往左進行，如此完成一次排序的動作，而您必須使用left與right兩個旗標來記錄左右兩端已排序的元素位置。<br>
+方法就在于气泡排序的双向进行，先让气泡排序由左向右进行，再来让气泡排序由右往左进行，如此完成一次排序的动作，而您必须使用left与right两个旗标来记录左右两端已排序的元素位置。<br>
 
 <br>
 
-一個排序的例子如下所示：<br>
+一个排序的例子如下所示：<br>
 
 <br>
 
@@ -179,13 +179,13 @@
 
 <br>
 
-如上所示，括號中表示左右兩邊已排序完成的部份，當left &gt; right時，則排序完成。 <br>
+如上所示，括号中表示左右两边已排序完成的部份，当left &gt; right时，则排序完成。 <br>
 
 
 
 <br>
 
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 
 <ul>
@@ -196,7 +196,7 @@
 </ul>
 
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br>#include &lt;time.h&gt; <br>#define MAX 10 <br>#define SWAP(x,y) {int t; t = x; x = y; y = t;} <br><br>void shakersort(int[]); <br><br>int main(void) { <br>    int number[MAX] = {0}; <br>    int i;  <br><br>    srand(time(NULL)); <br><br>    printf("排序前："); <br>    for(i = 0; i &lt; MAX; i++) { <br>        number[i] = rand() % 100; <br>        printf("%d ", number[i]); <br>    } <br><br>    shakersort(number); <br><br>    printf("\n"); <br><br>    return 0; <br>} <br><br>void shakersort(int number[]) { <br>    int i, left = 0, right = MAX - 1, shift = 0; <br><br>    while(left &lt; right) { <br>        // 向右進行氣泡排序 <br>        for(i = left; i &lt; right; i++) { <br>            if(number[i] &gt; number[i+1]) { <br>                SWAP(number[i], number[i+1]); <br>                shift = i; <br>            } <br>        } <br>        right = shift; <br><br>        printf("\n往右排序："); <br>        for(i = 0; i &lt; MAX; i++) <br>            printf("%d ", number[i]); <br><br>        // 向左進行氣泡排序 <br>        for(i = right; i &gt; left; i--) { <br>            if(number[i] &lt; number[i-1]) { <br>                SWAP(number[i], number[i-1]); <br>                shift = i; <br>            } <br>        } <br>        left = shift; <br><br>        printf("\n向左排序："); <br>        for(i = 0; i &lt; MAX; i++) <br>            printf("%d ", number[i]); <br>    } <br>} <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br>#include &lt;time.h&gt; <br>#define MAX 10 <br>#define SWAP(x,y) {int t; t = x; x = y; y = t;} <br><br>void shakersort(int[]); <br><br>int main(void) { <br>    int number[MAX] = {0}; <br>    int i;  <br><br>    srand(time(NULL)); <br><br>    printf("排序前："); <br>    for(i = 0; i &lt; MAX; i++) { <br>        number[i] = rand() % 100; <br>        printf("%d ", number[i]); <br>    } <br><br>    shakersort(number); <br><br>    printf("\n"); <br><br>    return 0; <br>} <br><br>void shakersort(int number[]) { <br>    int i, left = 0, right = MAX - 1, shift = 0; <br><br>    while(left &lt; right) { <br>        // 向右进行气泡排序 <br>        for(i = left; i &lt; right; i++) { <br>            if(number[i] &gt; number[i+1]) { <br>                SWAP(number[i], number[i+1]); <br>                shift = i; <br>            } <br>        } <br>        right = shift; <br><br>        printf("\n往右排序："); <br>        for(i = 0; i &lt; MAX; i++) <br>            printf("%d ", number[i]); <br><br>        // 向左进行气泡排序 <br>        for(i = right; i &gt; left; i--) { <br>            if(number[i] &lt; number[i-1]) { <br>                SWAP(number[i], number[i-1]); <br>                shift = i; <br>            } <br>        } <br>        left = shift; <br><br>        printf("\n向左排序："); <br>        for(i = 0; i &lt; MAX; i++) <br>            printf("%d ", number[i]); <br>    } <br>} <br></pre>
 
 
 <br>
@@ -210,7 +210,7 @@
 </ul>
 
 
-<pre>public class ShakerSort {<br>    public static void sort(int[] number) {<br>        int i, left = 0, <br>               right = number.length - 1, <br>               shift = 0; <br><br>        while(left &lt; right) { <br>            // 向右進行氣泡排序 <br>            for(i = left; i &lt; right; i++) { <br>                if(number[i] &gt; number[i+1]) { <br>                    swap(number, i, i+1); <br>                    shift = i; <br>                } <br>            } <br>            right = shift; <br><br>            // 向左進行氣泡排序 <br>            for(i = right; i &gt; left; i--) { <br>                if(number[i] &lt; number[i-1]) { <br>                    swap(number, i ,i-1); <br>                    shift = i; <br>                } <br>            } <br>            left = shift; <br>        } <br>    }<br><br>    private static void swap(int[] number, int i, int j) {<br>        int t; <br>        t = number[i]; <br>        number[i] = number[j]; <br>        number[j] = t;<br>    }<br>} </pre>
+<pre>public class ShakerSort {<br>    public static void sort(int[] number) {<br>        int i, left = 0, <br>               right = number.length - 1, <br>               shift = 0; <br><br>        while(left &lt; right) { <br>            // 向右进行气泡排序 <br>            for(i = left; i &lt; right; i++) { <br>                if(number[i] &gt; number[i+1]) { <br>                    swap(number, i, i+1); <br>                    shift = i; <br>                } <br>            } <br>            right = shift; <br><br>            // 向左进行气泡排序 <br>            for(i = right; i &gt; left; i--) { <br>                if(number[i] &lt; number[i-1]) { <br>                    swap(number, i ,i-1); <br>                    shift = i; <br>                } <br>            } <br>            left = shift; <br>        } <br>    }<br><br>    private static void swap(int[] number, int i, int j) {<br>        int t; <br>        t = number[i]; <br>        number[i] = number[j]; <br>        number[j] = t;<br>    }<br>} </pre>
 
 <br>
 

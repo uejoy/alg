@@ -44,7 +44,7 @@
   
   
   
-  <title>格雷碼（Gray Code）</title>
+  <title>格雷码（Gray Code）</title>
 </head>
 
 
@@ -59,15 +59,15 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 格雷碼（Gray Code）</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 格雷码（Gray Code）</a></h1>
 
 
 
 
 
-<h2>說明</h2>
+<h2>说明</h2>
 
-Gray Code是一個數列集合，每個數使用二進位來表示，假設使用n位元來表示每個數好了，任兩個數之間只有一個位元值不同，例如以下為3位元的Gray Code：<br>
+Gray Code是一个数列集合，每个数使用二进位来表示，假设使用n位元来表示每个数好了，任两个数之间只有一个位元值不同，例如以下为3位元的Gray Code：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">000 001 011 010 110 111 101 100</span><br>
 
@@ -75,7 +75,7 @@ Gray Code是一個數列集合，每個數使用二進位來表示，假設使�
 
 <br>
 
-由定義可以知道，Gray Code的順序並不是唯一的，例如將上面的數列反過來寫，也是一組Gray Code：<br>
+由定义可以知道，Gray Code的顺序并不是唯一的，例如将上面的数列反过来写，也是一组Gray Code：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">100 101 111 110 010 011 001 000</span><br>
 
@@ -83,11 +83,11 @@ Gray Code是一個數列集合，每個數使用二進位來表示，假設使�
 
 <br>
 
-Gray Code是由貝爾實驗室的Frank Gray在1940年代提出的，用來在使用PCM（Pusle Code Modulation）方法傳送訊號時避免出錯，並於1953年三月十七日取得美國專利。<br>
+Gray Code是由贝尔实验室的Frank Gray在1940年代提出的，用来在使用PCM（Pusle Code Modulation）方法传送讯号时避免出错，并于1953年三月十七日取得美国专利。<br>
 
 <h2>解法</h2>
 
-由於Gray Code相鄰兩數之間只改變一個位元，所以可觀 察Gray Code從1變0或從0變1時的位置，假設有4位元的Gray Code如下：<br>
+由于Gray Code相邻两数之间只改变一个位元，所以可观 察Gray Code从1变0或从0变1时的位置，假设有4位元的Gray Code如下：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">0000 0001 0011 0010 0110 0111 0101 0100</span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
 
@@ -97,28 +97,28 @@ Gray Code是由貝爾實驗室的Frank Gray在1940年代提出的，用來在使
 
 <br>
 
-觀察奇數項的變化時，我們發現無論它是第幾個Gray Code，永遠只改變最右邊的位元，如果是1就改為0，如果是0就改為1。<br>
+观察奇数项的变化时，我们发现无论它是第几个Gray Code，永远只改变最右边的位元，如果是1就改为0，如果是0就改为1。<br>
 
 <br>
 
-觀察偶數項的變化時，我們發現所改變的位元，是由右邊算來第一個1的左邊位元。<br>
+观察偶数项的变化时，我们发现所改变的位元，是由右边算来第一个1的左边位元。<br>
 
 <br>
 
-以上兩個變化規則是固定的，無論位元數為何；所以只要判斷位元的位置是奇數還是偶數，就可以決定要改變哪一個位元的值，為了程式撰寫方便，將陣列索引 0當作最右邊的值，而在列印結果時，是由索引數字大的開始反向列印。<br>
+以上两个变化规则是固定的，无论位元数为何；所以只要判断位元的位置是奇数还是偶数，就可以决定要改变哪一个位元的值，为了程式撰写方便，将阵列索引 0当作最右边的值，而在列印结果时，是由索引数字大的开始反向列印。<br>
 
 <br>
 
-將2位元的Gray Code當作平面座標來看，可以構成一個四邊形，您可以發現從任一頂點出發，繞四邊形周長繞一圈，所經過的頂點座標就是一組Gray Code，所以您可以得到四組Gray Code。<br>
+将2位元的Gray Code当作平面座标来看，可以构成一个四边形，您可以发现从任一顶点出发，绕四边形周长绕一圈，所经过的顶点座标就是一组Gray Code，所以您可以得到四组Gray Code。<br>
 
 <br>
 
-同樣的將3位元的Gray Code當作平面座標來看的話，可以構成一個正立方體，如果您可以從任一頂點出發，將所有的邊長走過，並不重複經過頂點的話，所經過的頂點座標順序之組合也就是一組Gray Code。 <br>
+同样的将3位元的Gray Code当作平面座标来看的话，可以构成一个正立方体，如果您可以从任一顶点出发，将所有的边长走过，并不重複经过顶点的话，所经过的顶点座标顺序之组合也就是一组Gray Code。 <br>
 
 
 <br>
 
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 
 <ul>
@@ -129,7 +129,7 @@ Gray Code是由貝爾實驗室的Frank Gray在1940年代提出的，用來在使
 </ul>
 
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>#define MAXBIT 20 <br>#define TRUE 1 <br>#define CHANGE_BIT(x) x = ((x) == '0' ? '1' : '0') <br>#define NEXT(x) x = (1 - (x)) <br><br>int main(void) { <br>    char digit[MAXBIT]; <br>    int i, bits, odd; <br><br>    printf("輸入位元數："); <br>    scanf("%d", &amp;bits); <br><br>    for(i = 0; i &lt; bits; i++) { <br>        digit[i] = '0'; <br>        printf("0"); <br>    } <br><br>    printf("\n"); <br><br>    odd = TRUE; <br><br>    while(1) { <br>        if(odd) <br>            CHANGE_BIT(digit[0]); <br>        else { <br>            // 計算第一個1的位置 <br>            for(i = 0; i &lt; bits &amp;&amp; digit[i] == '0'; i++) ; <br>            if(i == bits - 1) // 最後一個Gray Code <br>                 break; <br>            CHANGE_BIT(digit[i+1]); <br>        } <br>        for(i = bits - 1; i &gt;= 0; i--) <br>            printf("%c", digit[i]); <br><br>        printf("\n"); <br>        NEXT(odd); <br>    } <br>    return 0; <br>} <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>#define MAXBIT 20 <br>#define TRUE 1 <br>#define CHANGE_BIT(x) x = ((x) == '0' ? '1' : '0') <br>#define NEXT(x) x = (1 - (x)) <br><br>int main(void) { <br>    char digit[MAXBIT]; <br>    int i, bits, odd; <br><br>    printf("输入位元数："); <br>    scanf("%d", &amp;bits); <br><br>    for(i = 0; i &lt; bits; i++) { <br>        digit[i] = '0'; <br>        printf("0"); <br>    } <br><br>    printf("\n"); <br><br>    odd = TRUE; <br><br>    while(1) { <br>        if(odd) <br>            CHANGE_BIT(digit[0]); <br>        else { <br>            // 计算第一个1的位置 <br>            for(i = 0; i &lt; bits &amp;&amp; digit[i] == '0'; i++) ; <br>            if(i == bits - 1) // 最后一个Gray Code <br>                 break; <br>            CHANGE_BIT(digit[i+1]); <br>        } <br>        for(i = bits - 1; i &gt;= 0; i--) <br>            printf("%c", digit[i]); <br><br>        printf("\n"); <br>        NEXT(odd); <br>    } <br>    return 0; <br>} <br></pre>
 
 
 
@@ -141,7 +141,7 @@ Gray Code是由貝爾實驗室的Frank Gray在1940年代提出的，用來在使
 </ul>
 
 
-<pre>public class GrayCode {<br>    private char[] digit;<br>    private boolean first;<br>    private boolean odd;<br>    private int count;<br>    <br>    public GrayCode(int length) {<br>        digit = new char[length];<br>        for(int i = 0; i &lt; length; i++) {<br>            digit[i] = '0';<br>        }<br>        <br>        first = true;<br>        odd = true;<br>    }<br>    <br>    public boolean hasNext() {<br>        // 計算第一個1的位置<br>        for(count = 0; <br>            (count &lt; digit.length) &amp;&amp; (digit[count] == '0');<br>             count++) ;        <br>        return count != digit.length - 1;<br>    }<br>    <br>    public char[] next() {<br>        if(first) {<br>            first = false;<br>            return digit;<br>        }<br>        <br>        if(odd) <br>            chargeBit(digit, 0); <br>        else { <br>            //  最後一個Gray Code 嗎<br>            if(hasNext())<br>                chargeBit(digit, count+1);  <br>        }<br>        <br>        odd = ((odd == true) ? false : true);<br>        <br>        return digit;<br>    }<br>    <br>    private void chargeBit(char[] digit, int i) {<br>        digit[i] = ((digit[i] == '0') ? '1' : '0');<br>    }<br>    <br>    public static void main(String[] args) {<br>        GrayCode code = new GrayCode(4);<br>        <br>        while(code.hasNext()) {<br>            char[] digit = code.next();<br>            for(int i = digit.length - 1; i &gt;= 0; i--) <br>                System.out.print(digit[i]);<br>            System.out.println();<br>        }<br>    }<br>} </pre>
+<pre>public class GrayCode {<br>    private char[] digit;<br>    private boolean first;<br>    private boolean odd;<br>    private int count;<br>    <br>    public GrayCode(int length) {<br>        digit = new char[length];<br>        for(int i = 0; i &lt; length; i++) {<br>            digit[i] = '0';<br>        }<br>        <br>        first = true;<br>        odd = true;<br>    }<br>    <br>    public boolean hasNext() {<br>        // 计算第一个1的位置<br>        for(count = 0; <br>            (count &lt; digit.length) &amp;&amp; (digit[count] == '0');<br>             count++) ;        <br>        return count != digit.length - 1;<br>    }<br>    <br>    public char[] next() {<br>        if(first) {<br>            first = false;<br>            return digit;<br>        }<br>        <br>        if(odd) <br>            chargeBit(digit, 0); <br>        else { <br>            //  最后一个Gray Code 吗<br>            if(hasNext())<br>                chargeBit(digit, count+1);  <br>        }<br>        <br>        odd = ((odd == true) ? false : true);<br>        <br>        return digit;<br>    }<br>    <br>    private void chargeBit(char[] digit, int i) {<br>        digit[i] = ((digit[i] == '0') ? '1' : '0');<br>    }<br>    <br>    public static void main(String[] args) {<br>        GrayCode code = new GrayCode(4);<br>        <br>        while(code.hasNext()) {<br>            char[] digit = code.next();<br>            for(int i = digit.length - 1; i &gt;= 0; i--) <br>                System.out.print(digit[i]);<br>            System.out.println();<br>        }<br>    }<br>} </pre>
 
 <br>
 

@@ -54,17 +54,17 @@
 
 
 
-<h2>&nbsp;說明</h2>
+<h2>&nbsp;说明</h2>
 
-三色旗的問題最早由E.W.Dijkstra所提出，他所使用的用語為Dutch Nation Flag(Dijkstra為荷蘭人)，而多數的作者則使用Three-Color Flag來稱之。<br>
+三色旗的问题最早由E.W.Dijkstra所提出，他所使用的用语为Dutch Nation Flag(Dijkstra为荷兰人)，而多数的作者则使用Three-Color Flag来称之。<br>
 
 <br>
 
-假設有一條繩子，上面有紅、白、藍三種顏色的旗子，起初繩子上的旗子顏色並沒有順序，您希望將之分類，並排列為藍、白、紅的順序，要如何移動次數才會最少，注意您只能在繩子上進行這個動作，而且一次只能調換兩個旗子。<br>
+假设有一条绳子，上面有红、白、蓝三种颜色的旗子，起初绳子上的旗子颜色并没有顺序，您希望将之分类，并排列为蓝、白、红的顺序，要如何移动次数才会最少，注意您只能在绳子上进行这个动作，而且一次只能调换两个旗子。<br>
 
 <h2>解法</h2>
 
-在一條繩子上移動，在程式中也就意味只能使用一個陣列，而不使用其它的陣列來作輔助，問題的解法很簡單，您可以自己想像一下在移動旗子，從繩子開頭進行，遇到藍色往前移，遇到白色留在中間，遇到紅色往後移，如下所示： <br>
+在一条绳子上移动，在程式中也就意味只能使用一个阵列，而不使用其它的阵列来作辅助，问题的解法很简单，您可以自己想像一下在移动旗子，从绳子开头进行，遇到蓝色往前移，遇到白色留在中间，遇到红色往后移，如下所示： <br>
 
 
 
@@ -76,21 +76,21 @@
 
 
 
-只是要讓移動次數最少的話，就要有些技巧：<br>
+只是要让移动次数最少的话，就要有些技巧：<br>
 
 <ol>
 
-  <li>如果圖中W所在的位置為白色，則W+1，表示未處理的部份移至至白色群組。</li>
+  <li>如果图中W所在的位置为白色，则W+1，表示未处理的部份移至至白色群组。</li>
 
-  <li>如果W部份為藍色，則B與W的元素對調，而B與W必須各+1，表示兩個群組都多了一個元素。</li>
+  <li>如果W部份为蓝色，则B与W的元素对调，而B与W必须各+1，表示两个群组都多了一个元素。</li>
 
-  <li>如果W所在的位置是紅色，則將W與R交換，但R要減1，表示未處理的部份減1。</li>
+  <li>如果W所在的位置是红色，则将W与R交换，但R要减1，表示未处理的部份减1。</li>
 
 </ol>
 
 <br>
 
-注意B、W、R並不是三色旗的個數，它們只是一個移動的指標；什麼時候移動結束呢？一開始時未處理的R指標會是等於旗子的總數，當R的索引數減至少於W的索引數時，表示接下來的旗子就都是紅色了，此時就可以結束移動，如下所示： <br>
+注意B、W、R并不是三色旗的个数，它们只是一个移动的指标；什麽时候移动结束呢？一开始时未处理的R指标会是等于旗子的总数，当R的索引数减至少于W的索引数时，表示接下来的旗子就都是红色了，此时就可以结束移动，如下所示： <br>
 
 <div style="text-align: center;"><img style="width: 502px; height: 236px;" alt="三色旗" title="三色旗" src="images/threeColorsFlags-2.jpg"></div>
 
@@ -106,7 +106,7 @@
 
 
 
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 
 
@@ -132,7 +132,7 @@
 </ul>
 
 
-<pre>import java.io.*;<br><br>public class ThreeColorsFlags {<br>    private void swap(char[] flags, int x, int y) {<br>        char temp;<br>        temp = flags[x];<br>        flags[x] = flags[y];<br>        flags[y] = temp;<br>    }<br>    <br>    public String move(char[] flags) {<br>        int wFlag = 0;<br>        int bFlag = 0;<br>        int rFlag = flags.length - 1;<br>    <br>        while(wFlag &lt;= rFlag) {<br>            if(flags[wFlag] == 'W') {<br>                wFlag++;<br>            }<br>            else if(flags[wFlag] == 'B') {<br>                swap(flags, bFlag, wFlag);<br>                bFlag++;<br>                wFlag++;<br>            }<br>            else {<br>                while(wFlag &lt; rFlag &amp;&amp; flags[rFlag] == 'R')<br>                    rFlag--;<br>                swap(flags, rFlag, wFlag);<br>                rFlag--;                <br>            }<br>        }<br>        <br>        return new String(flags);<br>    }<br>    <br>    public static void main(String[] args) <br>                                throws IOException {        <br>        BufferedReader buf; <br>        buf = new BufferedReader(<br>                    new InputStreamReader(System.in)); <br><br>        System.out.print("輸入三色棋順序（ex. RWBBWRWR）：");<br>        String flags = buf.readLine();<br>        <br>        ThreeColorsFlags threeColorsFlag = new ThreeColorsFlags();<br>        flags = threeColorsFlag.move(<br>                   flags.toUpperCase().toCharArray());<br>        <br>        System.out.println("移動順序後：" + flags);        <br>    }<br>}</pre>
+<pre>import java.io.*;<br><br>public class ThreeColorsFlags {<br>    private void swap(char[] flags, int x, int y) {<br>        char temp;<br>        temp = flags[x];<br>        flags[x] = flags[y];<br>        flags[y] = temp;<br>    }<br>    <br>    public String move(char[] flags) {<br>        int wFlag = 0;<br>        int bFlag = 0;<br>        int rFlag = flags.length - 1;<br>    <br>        while(wFlag &lt;= rFlag) {<br>            if(flags[wFlag] == 'W') {<br>                wFlag++;<br>            }<br>            else if(flags[wFlag] == 'B') {<br>                swap(flags, bFlag, wFlag);<br>                bFlag++;<br>                wFlag++;<br>            }<br>            else {<br>                while(wFlag &lt; rFlag &amp;&amp; flags[rFlag] == 'R')<br>                    rFlag--;<br>                swap(flags, rFlag, wFlag);<br>                rFlag--;                <br>            }<br>        }<br>        <br>        return new String(flags);<br>    }<br>    <br>    public static void main(String[] args) <br>                                throws IOException {        <br>        BufferedReader buf; <br>        buf = new BufferedReader(<br>                    new InputStreamReader(System.in)); <br><br>        System.out.print("输入三色棋顺序（ex. RWBBWRWR）：");<br>        String flags = buf.readLine();<br>        <br>        ThreeColorsFlags threeColorsFlag = new ThreeColorsFlags();<br>        flags = threeColorsFlag.move(<br>                   flags.toUpperCase().toCharArray());<br>        <br>        System.out.println("移动顺序后：" + flags);        <br>    }<br>}</pre>
 
 <br>
 

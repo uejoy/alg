@@ -28,7 +28,7 @@
   
   
   
-  <title>背包問題（Knapsack Problem）</title>
+  <title>背包问题（Knapsack Problem）</title>
 </head>
 
 
@@ -40,13 +40,13 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 背包問題（Knapsack Problem）</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 背包问题（Knapsack Problem）</a></h1>
 
 
 
-<h2> 說明</h2>
+<h2> 说明</h2>
 
-假設有一個背包的負重最多可達8公斤，而希望在背包中裝入負重範圍內可得之總價物品，假設是水果好了，水果的編號、單價與重量如下所示： <br>
+假设有一个背包的负重最多可达8公斤，而希望在背包中装入负重范围内可得之总价物品，假设是水果好了，水果的编号、单价与重量如下所示： <br>
 
 <table border="1" width="50%">
 
@@ -68,7 +68,7 @@
 
       <td align="left" valign="top"><small>1 </small></td>
 
-      <td align="left" valign="top"><small>蘋果 </small></td>
+      <td align="left" valign="top"><small>苹果 </small></td>
 
       <td align="left" valign="top"><small>5KG </small></td>
 
@@ -120,15 +120,15 @@
 
 <h2> 解法</h2>
 
-背包問題是關於最佳化的問題，要解最佳化問題可以使用「動態規劃」（Dynamic
-programming），從空集合開始，每增加一個元素就先求出該階段的最佳解，直到所有的元素加入至集合中，最後得到的就是最佳解。 <br>
+背包问题是关于最佳化的问题，要解最佳化问题可以使用「动态规划」（Dynamic
+programming），从空集合开始，每增加一个元素就先求出该阶段的最佳解，直到所有的元素加入至集合中，最后得到的就是最佳解。 <br>
 
 <br>
-以背包問題為例，我們使用兩個陣列value與item，value表示目前的最佳解所得之總價，item表示最後一個放至背包的水果，假設有負重量
-1∼8的背包8個，並對每個背包求其最佳解。 <br>
+以背包问题为例，我们使用两个阵列value与item，value表示目前的最佳解所得之总价，item表示最后一个放至背包的水果，假设有负重量
+1∼8的背包8个，并对每个背包求其最佳解。 <br>
 
 <br>
-逐步將水果放入背包中，並求該階段的最佳解：<br>
+逐步将水果放入背包中，并求该阶段的最佳解：<br>
 
 <ul>
   <li> 放入李子
@@ -141,7 +141,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 
     <tr>
 
-      <td align="left" valign="top"><small>背包負重 </small></td>
+      <td align="left" valign="top"><small>背包负重 </small></td>
 
       <td align="left" valign="top"><small>1 </small></td>
 
@@ -212,7 +212,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 <br>
 
 <ul>
-  <li> 放入蘋果
+  <li> 放入苹果
   </li>
 </ul>
 
@@ -222,7 +222,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 
     <tr>
 
-      <td align="left" valign="top"><small>背包負重 </small></td>
+      <td align="left" valign="top"><small>背包负重 </small></td>
 
       <td align="left" valign="top"><small>1 </small></td>
 
@@ -302,7 +302,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 
     <tr>
 
-      <td align="left" valign="top"><small>背包負重 </small></td>
+      <td align="left" valign="top"><small>背包负重 </small></td>
 
       <td align="left" valign="top"><small>1 </small></td>
 
@@ -383,7 +383,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 
     <tr>
 
-      <td align="left" valign="top"><small>背包負重 </small></td>
+      <td align="left" valign="top"><small>背包负重 </small></td>
 
       <td align="left" valign="top"><small>1 </small></td>
 
@@ -464,7 +464,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 
     <tr>
 
-      <td align="left" valign="top"><small>背包負重 </small></td>
+      <td align="left" valign="top"><small>背包负重 </small></td>
 
       <td align="left" valign="top"><small>1 </small></td>
 
@@ -533,19 +533,19 @@ programming），從空集合開始，每增加一個元素就先求出該階段
 </table>
 
 <br>
-由最後一個表格，可以得知在背包負重8公斤時，最多可以裝入9050元的水果，而最後一個裝入的
-水果是3號，也就是草莓，裝入了草莓，背包只能再放入7公斤（8-1）的水果，所以必須看背包負重7公斤時的最佳解，最後一個放入的是2號，也就
-是橘子，現在背包剩下負重量5公斤（7-2），所以看負重5公斤的最佳解，最後放入的是1號，也就是蘋果，此時背包負重量剩下0公斤（5-5），無法
-再放入水果，所以求出最佳解為放入草莓、橘子與蘋果，而總價為9050元。<br>
+由最后一个表格，可以得知在背包负重8公斤时，最多可以装入9050元的水果，而最后一个装入的
+水果是3号，也就是草莓，装入了草莓，背包只能再放入7公斤（8-1）的水果，所以必须看背包负重7公斤时的最佳解，最后一个放入的是2号，也就
+是橘子，现在背包剩下负重量5公斤（7-2），所以看负重5公斤的最佳解，最后放入的是1号，也就是苹果，此时背包负重量剩下0公斤（5-5），无法
+再放入水果，所以求出最佳解为放入草莓、橘子与苹果，而总价为9050元。<br>
 <br>
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 <ul>
   <li> C
   </li>
 </ul>
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>#define LIMIT 8   // 重量限制 <br>#define N 5       // 物品種類 <br>#define MIN 1     // 最小重量 <br><br>struct body { <br>    char name[20]; <br>    int size; <br>    int price; <br>}; <br><br>typedef struct body object; <br><br>int main(void) { <br>    int item[LIMIT+1] = {0}; <br>    int value[LIMIT+1] = {0}; <br>    int newvalue, i, s, p; <br><br>    object a[] = {{"李子", 4, 4500}, <br>                  {"蘋果", 5, 5700}, <br>                  {"橘子", 2, 2250}, <br>                  {"草莓", 1, 1100}, <br>                  {"甜瓜", 6, 6700}}; <br><br>    for(i = 0; i &lt; N; i++) { <br>        for(s = a[i].size; s &lt;= LIMIT; s++) { <br>            p = s - a[i].size; <br>            newvalue = value[p] + a[i].price; <br>            if(newvalue &gt; value[s]) {// 找到階段最佳解 <br>                value[s] = newvalue; <br>                item[s] = i; <br>            } <br>        } <br>    } <br><br>    printf("物品\t價格\n"); <br>    for(i = LIMIT; i &gt;= MIN; i = i - a[item[i]].size) { <br>        printf("%s\t%d\n", <br>                  a[item[i]].name, a[item[i]].price); <br>    } <br><br>    printf("合計\t%d\n", value[LIMIT]); <br><br>    return 0; <br>}  <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>#define LIMIT 8   // 重量限制 <br>#define N 5       // 物品种类 <br>#define MIN 1     // 最小重量 <br><br>struct body { <br>    char name[20]; <br>    int size; <br>    int price; <br>}; <br><br>typedef struct body object; <br><br>int main(void) { <br>    int item[LIMIT+1] = {0}; <br>    int value[LIMIT+1] = {0}; <br>    int newvalue, i, s, p; <br><br>    object a[] = {{"李子", 4, 4500}, <br>                  {"苹果", 5, 5700}, <br>                  {"橘子", 2, 2250}, <br>                  {"草莓", 1, 1100}, <br>                  {"甜瓜", 6, 6700}}; <br><br>    for(i = 0; i &lt; N; i++) { <br>        for(s = a[i].size; s &lt;= LIMIT; s++) { <br>            p = s - a[i].size; <br>            newvalue = value[p] + a[i].price; <br>            if(newvalue &gt; value[s]) {// 找到阶段最佳解 <br>                value[s] = newvalue; <br>                item[s] = i; <br>            } <br>        } <br>    } <br><br>    printf("物品\t价格\n"); <br>    for(i = LIMIT; i &gt;= MIN; i = i - a[item[i]].size) { <br>        printf("%s\t%d\n", <br>                  a[item[i]].name, a[item[i]].price); <br>    } <br><br>    printf("合计\t%d\n", value[LIMIT]); <br><br>    return 0; <br>}  <br></pre>
 
 <br>
 
@@ -554,7 +554,7 @@ programming），從空集合開始，每增加一個元素就先求出該階段
   </li>
 </ul>
 
-<pre>class Fruit {<br>    private String name;<br>    private int size;<br>    private int price;<br>    <br>    public Fruit(String name, int size, int price) {<br>        this.name = name;<br>        this.size = size;<br>        this.price = price;<br>    }<br>    <br>    public String getName() {<br>        return name;<br>    }<br><br>    public int getPrice() {<br>        return price;<br>    }<br><br>    public int getSize() {<br>        return size;<br>    }<br>}<br><br>public class Knapsack {<br>    public static void main(String[] args) {<br>        final int MAX = 8;<br>        final int MIN = 1;<br>        int[] item = new int[MAX+1]; <br>        int[] value = new int[MAX+1];  <br><br>        Fruit fruits[] = {<br>                new Fruit("李子", 4, 4500), <br>                new Fruit("蘋果", 5, 5700), <br>                new Fruit("橘子", 2, 2250), <br>                new Fruit("草莓", 1, 1100), <br>                new Fruit("甜瓜", 6, 6700)}; <br><br>        for(int i = 0; i &lt; fruits.length; i++) { <br>            for(int s = fruits[i].getSize(); s &lt;= MAX; s++) { <br>                int p = s - fruits[i].getSize(); <br>                int newvalue = value[p] + <br>                                   fruits[i].getPrice(); <br>                if(newvalue &gt; value[s]) {// 找到階段最佳解 <br>                    value[s] = newvalue; <br>                    item[s] = i; <br>                } <br>            } <br>        } <br><br>        System.out.println("物品\t價格"); <br>        for(int i = MAX; <br>            i &gt;= MIN; <br>            i = i - fruits[item[i]].getSize()) { <br>            System.out.println(fruits[item[i]].getName()+ <br>                    "\t" + fruits[item[i]].getPrice()); <br>        } <br><br>        System.out.println("合計\t" + value[MAX]);  <br>    }<br>}</pre>
+<pre>class Fruit {<br>    private String name;<br>    private int size;<br>    private int price;<br>    <br>    public Fruit(String name, int size, int price) {<br>        this.name = name;<br>        this.size = size;<br>        this.price = price;<br>    }<br>    <br>    public String getName() {<br>        return name;<br>    }<br><br>    public int getPrice() {<br>        return price;<br>    }<br><br>    public int getSize() {<br>        return size;<br>    }<br>}<br><br>public class Knapsack {<br>    public static void main(String[] args) {<br>        final int MAX = 8;<br>        final int MIN = 1;<br>        int[] item = new int[MAX+1]; <br>        int[] value = new int[MAX+1];  <br><br>        Fruit fruits[] = {<br>                new Fruit("李子", 4, 4500), <br>                new Fruit("苹果", 5, 5700), <br>                new Fruit("橘子", 2, 2250), <br>                new Fruit("草莓", 1, 1100), <br>                new Fruit("甜瓜", 6, 6700)}; <br><br>        for(int i = 0; i &lt; fruits.length; i++) { <br>            for(int s = fruits[i].getSize(); s &lt;= MAX; s++) { <br>                int p = s - fruits[i].getSize(); <br>                int newvalue = value[p] + <br>                                   fruits[i].getPrice(); <br>                if(newvalue &gt; value[s]) {// 找到阶段最佳解 <br>                    value[s] = newvalue; <br>                    item[s] = i; <br>                } <br>            } <br>        } <br><br>        System.out.println("物品\t价格"); <br>        for(int i = MAX; <br>            i &gt;= MIN; <br>            i = i - fruits[item[i]].getSize()) { <br>            System.out.println(fruits[item[i]].getName()+ <br>                    "\t" + fruits[item[i]].getPrice()); <br>        } <br><br>        System.out.println("合计\t" + value[MAX]);  <br>    }<br>}</pre>
 <br>
 <br>
 <br>

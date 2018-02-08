@@ -65,7 +65,7 @@
 
 
 
-巴斯卡（Pascal）三角形基本上就是在解 nCr ，因為三角形上的每一個數字各對應一個n<big>C</big>r，其中 n 為 row，而 r 為 column，如下：<br>
+巴斯卡（Pascal）三角形基本上就是在解 nCr ，因为三角形上的每一个数字各对应一个n<big>C</big>r，其中 n 为 row，而 r 为 column，如下：<br>
 
 
 
@@ -93,7 +93,7 @@
 
 
 
-對應的數據如下圖所示： <br>
+对应的数据如下图所示： <br>
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-<div style="text-align: left;">巴斯卡三角形中的 nCr 可以使用以下這個公式來計算，以避免階乘運算時的數值溢位：<br>
+<div style="text-align: left;">巴斯卡三角形中的 nCr 可以使用以下这个公式来计算，以避免阶乘运算时的数值溢位：<br>
 
 
 
@@ -154,7 +154,7 @@ n<big><big>C</big></big>0 = 1&nbsp;</div>
 
 
 
-<pre>/* 計算nCr，但是並不快，只是方便 */<br>Procedure COMBI(n, r) [<br>    FOR(i = 1; i &lt;= r; i = i + 1)<br>        p = p * (n-i+1) / i;<br><br>    RETURN p;<br>] <br></pre>
+<pre>/* 计算nCr，但是并不快，只是方便 */<br>Procedure COMBI(n, r) [<br>    FOR(i = 1; i &lt;= r; i = i + 1)<br>        p = p * (n-i+1) / i;<br><br>    RETURN p;<br>] <br></pre>
 
 
 
@@ -162,9 +162,9 @@ n<big><big>C</big></big>0 = 1&nbsp;</div>
 
 
 
-解決 n<big>C</big>r 的算法之後，剩下的就是如何將這些數字排版成三角形的問題了，這就要看您是如何顯示成果的了，下面的程式將分別示範文字模式（C實作）與視窗模式（Java實作）的解法。
+解决 n<big>C</big>r 的算法之后，剩下的就是如何将这些数字排版成三角形的问题了，这就要看您是如何显示成果的了，下面的程式将分别示范文字模式（C实作）与视窗模式（Java实作）的解法。
 
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 
 
@@ -184,7 +184,7 @@ n<big><big>C</big></big>0 = 1&nbsp;</div>
 
 
 
-<pre>#include &lt;stdio.h&gt;<br>#define N 12<br><br>long combi(int n, int r){<br>    int i;<br>    long p = 1;<br><br>    for(i = 1; i &lt;= r; i++)<br>        p = p * (n-i+1) / i;<br><br>    return p;<br>}<br><br>void paint() {<br>    int n, r, t;<br><br>    for(n = 0; n &lt;= N; n++) {<br>        for(r = 0; r &lt;= n; r++) {<br>            int i;<br>            /* 排版設定開始 */<br>            if(r == 0) {  <br>                for(i = 0; i &lt;= (N-n); i++) {<br>                    printf("   ");<br>                }<br>            }<br>            else {<br>                printf("   ");<br>            } /* 排版設定結束 */<br><br>            printf("%3d", combi(n, r));<br>        }<br>        printf("\n");<br>    }<br>}<br><br>int main() {<br>    paint();<br>    return 0;<br>} <br></pre>
+<pre>#include &lt;stdio.h&gt;<br>#define N 12<br><br>long combi(int n, int r){<br>    int i;<br>    long p = 1;<br><br>    for(i = 1; i &lt;= r; i++)<br>        p = p * (n-i+1) / i;<br><br>    return p;<br>}<br><br>void paint() {<br>    int n, r, t;<br><br>    for(n = 0; n &lt;= N; n++) {<br>        for(r = 0; r &lt;= n; r++) {<br>            int i;<br>            /* 排版设定开始 */<br>            if(r == 0) {  <br>                for(i = 0; i &lt;= (N-n); i++) {<br>                    printf("   ");<br>                }<br>            }<br>            else {<br>                printf("   ");<br>            } /* 排版设定结束 */<br><br>            printf("%3d", combi(n, r));<br>        }<br>        printf("\n");<br>    }<br>}<br><br>int main() {<br>    paint();<br>    return 0;<br>} <br></pre>
 
 
 

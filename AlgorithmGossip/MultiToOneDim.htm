@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
 
 
 
@@ -33,7 +32,7 @@
   
   
   
-  <meta content="text/html; charset=Big5" http-equiv="content-type">
+  
 
 
 
@@ -44,7 +43,7 @@
   
   
   
-  <title>¦hºû¯x°}Âà¤@ºû¯x°}</title>
+  <title>多维矩阵转一维矩阵</title>
 </head>
 
 
@@ -60,59 +59,59 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: ¦hºû¯x°}Âà¤@ºû¯x°}</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 多维矩阵转一维矩阵</a></h1>
 
 
 
 
 
-<h2>»¡©ú</h2>
+<h2>说明</h2>
 
-¦³ªº®É­Ô¡A¬°¤F¹Bºâ¤è«K©Î¸ê®ÆÀx¦sªºªÅ¶¡°ÝÃD¡A¨Ï¥Î¤@ºû°}¦C·|¤ñ¤Gºû©Î¦hºû°}¦C¨Ó±o¤è«K¡A¨Ò¦p¤W¤T¨¤¯x°}¡B¤U¤T¨¤¯x°}©Î¹ï¨¤¯x°}¡A¨Ï¥Î¤@ºû°}¦C·|¤ñ¨Ï¥Î¤Gºû°}¦C¨Ó±o¸`¬ÙªÅ¶¡¡C<br>
+有的时候，为了运算方便或资料储存的空间问题，使用一维阵列会比二维或多维阵列来得方便，例如上三角矩阵、下三角矩阵或对角矩阵，使用一维阵列会比使用二维阵列来得节省空间。<br>
 
-<h2>¸Ñªk</h2>
+<h2>解法</h2>
 
-¥H¤Gºû°}¦CÂà¤@ºû°}¦C¬°¨Ò¡A¯Á¤Þ­È¥Ñ0¶}©l¡A¦b¥Ñ¤Gºû°}¦CÂà¤@ºû°}¦C®É¡A§Ú­Ì¦³¨âºØ¤è¦¡¡G¡u¥H¦C¡]Row¡^¬°¥D¡v©Î¡u¥H¦æ¡]Column¡^¬°¥D¡v¡C¥Ñ©ó
-C/C++¡BJavaµ¥ªº°O¾ÐÅé°t¸m¤è¦¡³£¬O¥H¦C¬°¥D¡A©Ò¥H±z¥i¯à·|¤ñ¸û¼ô±x«eªÌ¡]Fortranªº°O¾ÐÅé°t¸m¤è¦¡¬O¥H¦æ¬°¥D¡^¡C<br>
+以二维阵列转一维阵列为例，索引值由0开始，在由二维阵列转一维阵列时，我们有两种方式：「以列（Row）为主」或「以行（Column）为主」。由于
+C/C++、Java等的记忆体配置方式都是以列为主，所以您可能会比较熟悉前者（Fortran的记忆体配置方式是以行为主）。<br>
 
 <br>
 
-¥H¦C¬°¥Dªº¤Gºû°}¦C­nÂà¬°¤@ºû°}¦C®É¡A¬O±N¤Gºû°}¦C¥Ñ¤W©¹¤U¤@¦C¤@¦CÅª¤J¤@ºû°}¦C¡A¦¹®É¯Á¤Þªº¹ïÀ³¤½¦¡¦p¤U©Ò¥Ü¡A¨ä¤¤row»Pcolumn¬O¤Gºû°}¦C¯Á¤Þ¡Alocªí¥Ü¹ïÀ³ªº¤@ºû°}¦C¯Á¤Þ¡G<br>
+以列为主的二维阵列要转为一维阵列时，是将二维阵列由上往下一列一列读入一维阵列，此时索引的对应公式如下所示，其中row与column是二维阵列索引，loc表示对应的一维阵列索引：<br>
 
-<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">loc = column + row*¦æ¼Æ</span><br>
+<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">loc = column + row*行数</span><br>
 
 </div>
 
 <br>
 
-¥H¦æ¬°¥Dªº¤Gºû°}¦C­nÂà¬°¤@ºû°}¦C®É¡A¬O±N¤Gºû°}¦C¥Ñ¥ª©¹¥k¤@¦æ¤@¦æÅª¤J¤@ºû°}¦C¡A¦¹®É¯Á¤Þªº¹ïÀ³¤½¦¡¦p¤U©Ò¥Ü¡G<br>
+以行为主的二维阵列要转为一维阵列时，是将二维阵列由左往右一行一行读入一维阵列，此时索引的对应公式如下所示：<br>
 
-<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">loc = row + column*¦C¼Æ</span><br>
-
-</div>
-
-<br>
-
-¤½¦¡ªº±À¾É±zµe¹Ï¬Ý¬Ý´Nª¾¹D¤F¡A¦pªG¬O¤Tºû°}¦C¡A«h¤½¦¡¦p¤U©Ò¥Ü¡A¨ä¤¤i¡]­Ó¼Æu1¡^¡Bj¡]­Ó¼Æu2¡^¡Bk¡]­Ó¼Æu3¡^¤À§Oªí¥Ü¤Tºû°}¦Cªº¤T­Ó¯Á¤Þ¡G<br>
-
-<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">¥H¦C¬°¥D¡Gloc = i*u2*u3 + j*u3 + k</span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
-
-<span style="font-weight: bold; font-family: Courier New,Courier,monospace;">¥H¦æ¬°¥D¡Gloc = k*u1*u2 + j*u1 + i</span><br>
+<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">loc = row + column*列数</span><br>
 
 </div>
 
 <br>
 
-§ó°ªºû«×ªº¥i¥H¦Û¦æ¨Ì¦¹Ãþ±À¡A¦ý³q±`§ó°ªºû«×ªº«ØÄ³¨Ï¥Î¨ä¥¦¸ê®Æµ²ºc¡]¨Ò¦pª«¥ó¥]¸Ë¡^·|¤ñ¸û¨ãÅé¡A¤]¤£©ö·d¿ù¡C<br>
+公式的推导您画图看看就知道了，如果是三维阵列，则公式如下所示，其中i（个数u1）、j（个数u2）、k（个数u3）分别表示三维阵列的三个索引：<br>
+
+<div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">以列为主：loc = i*u2*u3 + j*u3 + k</span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
+
+<span style="font-weight: bold; font-family: Courier New,Courier,monospace;">以行为主：loc = k*u1*u2 + j*u1 + i</span><br>
+
+</div>
 
 <br>
 
-¦bC/C++¤¤­Y¨Ï¥Î¨ì«ü¼Ð®É¡A·|¹J¨ì«ü¼Ð¹Bºâ»P°O¾ÐÅéªÅ¶¡¦ì§}ªº³B²z°ÝÃD¡A¦¹®É¤]¬O¥Î¨ì³oÃäªº¤½¦¡¡A¤£¹L¥²¶·¦b¨C¤@­Ó¶µ¤W­¼¤W¸ê®Æ«¬ºAªº°O¾ÐÅé¤j¤p¡C <br>
+更高维度的可以自行依此类推，但通常更高维度的建议使用其它资料结构（例如物件包装）会比较具体，也不易搞错。<br>
+
+<br>
+
+在C/C++中若使用到指标时，会遇到指标运算与记忆体空间位址的处理问题，此时也是用到这边的公式，不过必须在每一个项上乘上资料型态的记忆体大小。 <br>
 
 
 <br>
 
-<h2> ¹ê§@</h2>
+<h2> 实作</h2>
 
 
 <ul>
@@ -123,7 +122,7 @@ C/C++¡BJavaµ¥ªº°O¾ÐÅé°t¸m¤è¦¡³£¬O¥H¦C¬°¥D¡A©Ò¥H±z¥
 </ul>
 
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>int main(void) { <br>    int arr1[3][4] = {{1, 2, 3, 4}, <br>                     {5, 6, 7, 8}, <br>                     {9, 10, 11, 12}}; <br>    int arr2[12] = {0}; <br>    int row, column, i; <br><br>    printf("­ì¤Gºû¸ê®Æ¡G\n"); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            printf("%4d", arr1[row][column]); <br>        } <br>        printf("\n"); <br>    } <br><br>    printf("\n¥H¦C¬°¥D¡G"); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            i = column + row * 4; <br>            arr2[i] = arr1[row][column]; <br>        } <br>    } <br>    for(i = 0; i &lt; 12; i++) <br>        printf("%d ", arr2[i]); <br><br>    printf("\n¥H¦æ¬°¥D¡G"); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            i = row + column * 3; <br>            arr2[i] = arr1[row][column]; <br>        } <br>    } <br>    for(i = 0; i &lt; 12; i++) <br>        printf("%d ", arr2[i]); <br><br>    printf("\n"); <br><br>    return 0; <br>} <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>int main(void) { <br>    int arr1[3][4] = {{1, 2, 3, 4}, <br>                     {5, 6, 7, 8}, <br>                     {9, 10, 11, 12}}; <br>    int arr2[12] = {0}; <br>    int row, column, i; <br><br>    printf("原二维资料：\n"); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            printf("%4d", arr1[row][column]); <br>        } <br>        printf("\n"); <br>    } <br><br>    printf("\n以列为主："); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            i = column + row * 4; <br>            arr2[i] = arr1[row][column]; <br>        } <br>    } <br>    for(i = 0; i &lt; 12; i++) <br>        printf("%d ", arr2[i]); <br><br>    printf("\n以行为主："); <br>    for(row = 0; row &lt; 3; row++) { <br>        for(column = 0; column &lt; 4; column++) { <br>            i = row + column * 3; <br>            arr2[i] = arr1[row][column]; <br>        } <br>    } <br>    for(i = 0; i &lt; 12; i++) <br>        printf("%d ", arr2[i]); <br><br>    printf("\n"); <br><br>    return 0; <br>} <br></pre>
 
 
 <br>
@@ -149,5 +148,6 @@ C/C++¡BJavaµ¥ªº°O¾ÐÅé°t¸m¤è¦¡³£¬O¥H¦C¬°¥D¡A©Ò¥H±z¥
 
 
 
-</body>
-</html>
+
+
+</body></html>

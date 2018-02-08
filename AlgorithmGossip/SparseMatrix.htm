@@ -44,7 +44,7 @@
   
   
   
-  <title>稀疏矩陣</title>
+  <title>稀疏矩阵</title>
 </head>
 
 
@@ -59,21 +59,21 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 稀疏矩陣</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 稀疏矩阵</a></h1>
 
 
 
 
 
-<h2>說明</h2>
+<h2>说明</h2>
 
-如果在矩陣中，多數的元素並沒有資料，稱此矩陣為稀疏矩陣（sparse
-matrix），由於矩陣在程式中常使用二維陣列表示，二維陣列的大小與使用的記憶體空間成正比，如果多數的元素沒有資料，則會造成記憶體空間的浪費，為
-此，必須設計稀疏矩陣的陣列儲存方式，利用較少的記憶體空間儲存完整的矩陣資訊。<br>
+如果在矩阵中，多数的元素并没有资料，称此矩阵为稀疏矩阵（sparse
+matrix），由于矩阵在程式中常使用二维阵列表示，二维阵列的大小与使用的记忆体空间成正比，如果多数的元素没有资料，则会造成记忆体空间的浪费，为
+此，必须设计稀疏矩阵的阵列储存方式，利用较少的记忆体空间储存完整的矩阵资讯。<br>
 
 <h2>解法</h2>
 
-在這邊所介紹的方法較為簡單，陣列只儲存矩陣的行數、列數與有資料的索引位置及其值，在需要使用矩陣資料時，再透過程式運算加以還原，例如若矩陣資料如下 ，其中0表示矩陣中該位置沒有資料：<br>
+在这边所介绍的方法较为简单，阵列只储存矩阵的行数、列数与有资料的索引位置及其值，在需要使用矩阵资料时，再透过程式运算加以还原，例如若矩阵资料如下 ，其中0表示矩阵中该位置没有资料：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0&nbsp; 0 </span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
 
@@ -89,7 +89,7 @@ matrix），由於矩陣在程式中常使用二維陣列表示，二維陣列�
 
 <br>
 
-這個矩陣是5X6矩陣，非零元素有4個，您要使用的陣列第一列記錄其列數、行數與非零元素個數：<br>
+这个矩阵是5X6矩阵，非零元素有4个，您要使用的阵列第一列记录其列数、行数与非零元素个数：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">5&nbsp; 6&nbsp; 4 </span><br>
 
@@ -97,7 +97,7 @@ matrix），由於矩陣在程式中常使用二維陣列表示，二維陣列�
 
 <br>
 
-陣列的第二列起，記錄其位置的列索引、行索引與儲存值：<br>
+阵列的第二列起，记录其位置的列索引、行索引与储存值：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">1&nbsp; 1&nbsp; 3 </span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
 
@@ -111,7 +111,7 @@ matrix），由於矩陣在程式中常使用二維陣列表示，二維陣列�
 
 <br>
 
-所以原本要用30個元素儲存的矩陣資訊，現在只使用了15個元素來儲存，節省了不少記憶體的使用。 <br>
+所以原本要用30个元素储存的矩阵资讯，现在只使用了15个元素来储存，节省了不少记忆体的使用。 <br>
 
 
 <ul>
@@ -122,7 +122,7 @@ matrix），由於矩陣在程式中常使用二維陣列表示，二維陣列�
 </ul>
 
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>int main(void) { <br>    int num[5][3] = {{5, 6, 4}, <br>                     {1, 1, 3}, <br>                     {2, 3, 6}, <br>                     {3, 2, 9}, <br>                     {4, 4, 12}}; <br>    int i, j, k = 1; <br><br>    printf("sparse matrix：\n"); <br>    for(i = 0; i &lt; 5; i++) { <br>        for(j = 0; j &lt; 3; j++) { <br>            printf("%4d", num[i][j]); <br>        } <br>        putchar('\n'); <br>    } <br><br>    printf("\nmatrix還原：\n"); <br>    for(i = 0; i &lt; num[0][0]; i++) { <br>        for(j = 0; j &lt; num[0][1]; j++) { <br>            if(k &lt; num[0][2] &amp;&amp; <br>               i == num[k][0] &amp;&amp; j == num[k][1]) { <br>                printf("%4d ", num[k][2]); <br>                k++; <br>            } <br>            else <br>                printf("%4d ", 0); <br>        } <br>        putchar('\n'); <br>    } <br><br>    return 0; <br>} <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;stdlib.h&gt; <br><br>int main(void) { <br>    int num[5][3] = {{5, 6, 4}, <br>                     {1, 1, 3}, <br>                     {2, 3, 6}, <br>                     {3, 2, 9}, <br>                     {4, 4, 12}}; <br>    int i, j, k = 1; <br><br>    printf("sparse matrix：\n"); <br>    for(i = 0; i &lt; 5; i++) { <br>        for(j = 0; j &lt; 3; j++) { <br>            printf("%4d", num[i][j]); <br>        } <br>        putchar('\n'); <br>    } <br><br>    printf("\nmatrix还原：\n"); <br>    for(i = 0; i &lt; num[0][0]; i++) { <br>        for(j = 0; j &lt; num[0][1]; j++) { <br>            if(k &lt; num[0][2] &amp;&amp; <br>               i == num[k][0] &amp;&amp; j == num[k][1]) { <br>                printf("%4d ", num[k][2]); <br>                k++; <br>            } <br>            else <br>                printf("%4d ", 0); <br>        } <br>        putchar('\n'); <br>    } <br><br>    return 0; <br>} <br></pre>
 
 
 <br>

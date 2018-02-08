@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
 
 
 
@@ -27,7 +26,7 @@
   
   
   
-  <meta content="text/html; charset=Big5" http-equiv="content-type">
+  
 
 
 
@@ -36,7 +35,7 @@
   
   
   
-  <title>﹊吹Ё计</title>
+  <title>阿姆斯壮数</title>
 </head>
 
 
@@ -49,18 +48,18 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: ﹊吹Ё计</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip: 阿姆斯壮数</a></h1>
 
 
 
 
-<h2>弧</h2>
+<h2>说明</h2>
 
-俱计いㄒ153骸ì1<sup>3</sup> + 5<sup>3</sup> + 3<sup>3</sup> = 153硂妓计嘿ぇArmstrong计刚糶祘Αт┮Τ计Armstrong计<br>
+在三位的整数中，例如153可以满足1<sup>3</sup> + 5<sup>3</sup> + 3<sup>3</sup> = 153，这样的数称之为Armstrong数，试写出一程式找出所有的三位数Armstrong数。<br>
 
-<h2>秆猭</h2>
+<h2>解法</h2>
 
-Armstrong计碝тㄤ龟碞琌拜盢计だ秆计计κ计......硂璶ㄏノ埃猭籔緇计笲衡碞ㄒ块 inputabc玥<br>
+Armstrong数的寻找，其实就是在问如何将一个数字分解为个位数、十位数、百位数......，这只要使用除法与馀数运算就可以了，例如输入 input为abc，则：<br>
 
 <div style="margin-left: 40px;"><span style="font-weight: bold; font-family: Courier New,Courier,monospace;">a = input / 100 </span><br style="font-weight: bold; font-family: Courier New,Courier,monospace;">
 
@@ -76,7 +75,7 @@ Armstrong计碝тㄤ龟碞琌拜盢计だ秆计
 
 
 
-<h2> 龟</h2>
+<h2> 实作</h2>
 
 
 <ul>
@@ -87,7 +86,7 @@ Armstrong计碝тㄤ龟碞琌拜盢计だ秆计
 </ul>
 
 
-<pre>#include &lt;stdio.h&gt; <br>#include &lt;time.h&gt; <br>#include &lt;math.h&gt; <br><br>int main(void) { <br>    int a, b, c; <br>    int input; <br><br>    printf("碝тArmstrong计\n"); <br><br>    for(input = 100; input &lt;= 999; input++) { <br>        a = input / 100; <br>        b = (input % 100) / 10; <br>        c = input % 10; <br>        if(a*a*a + b*b*b + c*c*c == input) <br>            printf("%d ", input); <br>    } <br><br>    printf("\n"); <br><br>    return 0; <br>} <br></pre>
+<pre>#include &lt;stdio.h&gt; <br>#include &lt;time.h&gt; <br>#include &lt;math.h&gt; <br><br>int main(void) { <br>    int a, b, c; <br>    int input; <br><br>    printf("寻找Armstrong数：\n"); <br><br>    for(input = 100; input &lt;= 999; input++) { <br>        a = input / 100; <br>        b = (input % 100) / 10; <br>        c = input % 10; <br>        if(a*a*a + b*b*b + c*c*c == input) <br>            printf("%d ", input); <br>    } <br><br>    printf("\n"); <br><br>    return 0; <br>} <br></pre>
 
 
 <br>
@@ -101,7 +100,7 @@ Armstrong计碝тㄤ龟碞琌拜盢计だ秆计
 </ul>
 
 
-<pre>public class Armstrong {<br>    public static void main(String[] args) {<br>        System.out.println("碝тArmstrong计"); <br><br>        for(int i = 100; i &lt;= 999; i++) { <br>                int a = i / 100; <br>                int b   = (i % 100) / 10; <br>                int c = i % 10; <br>                if(a*a*a + b*b*b + c*c*c == i) <br>                        System.out.print(i + " "); <br>        } <br><br>        System.out.println();<br>    }<br>}</pre>
+<pre>public class Armstrong {<br>    public static void main(String[] args) {<br>        System.out.println("寻找Armstrong数："); <br><br>        for(int i = 100; i &lt;= 999; i++) { <br>                int a = i / 100; <br>                int b   = (i % 100) / 10; <br>                int c = i % 10; <br>                if(a*a*a + b*b*b + c*c*c == i) <br>                        System.out.print(i + " "); <br>        } <br><br>        System.out.println();<br>    }<br>}</pre>
 
 <br>
 
@@ -110,5 +109,6 @@ Armstrong计碝тㄤ龟碞琌拜盢计だ秆计
 
 
 
-</body>
-</html>
+
+
+</body></html>

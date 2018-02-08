@@ -36,7 +36,7 @@
   
   
   
-  <title>費式數列</title>
+  <title>费式数列</title>
 </head>
 
 
@@ -50,25 +50,25 @@
 
 
 
-<h1><a href="AlgorithmGossip.htm">Algorithm Gossip:&nbsp;費式數列</a></h1>
+<h1><a href="AlgorithmGossip.htm">Algorithm Gossip:&nbsp;费式数列</a></h1>
 
 
 
 
-<h2> 說明</h2>
+<h2> 说明</h2>
 
 
 
-Fibonacci為1200年代的歐洲數學家，在他的著作中曾經提到：「若有一隻免子每個月生一隻小免子，一個月後小免子也開始生產。起初只有一隻免
-子，一個月後就有兩隻免子，二個月後有三隻免子，三個月後有五隻免子（小免子投入生產）......」。 <br>
+Fibonacci为1200年代的欧洲数学家，在他的着作中曾经提到：「若有一隻免子每个月生一隻小免子，一个月后小免子也开始生产。起初只有一隻免
+子，一个月后就有两隻免子，二个月后有三隻免子，三个月后有五隻免子（小免子投入生产）......」。 <br>
 
 
 
 <br>
 
 
-如果不太理解這個例子的話，舉個圖就知道了，注意新生的小免子需一個月成長期才會投入生產，類似的道理也可以用於植物的生長，這就是Fibonacci數
-列，一般習慣稱之為費氏數列，例如以下： <br>
+如果不太理解这个例子的话，举个图就知道了，注意新生的小免子需一个月成长期才会投入生产，类似的道理也可以用于植物的生长，这就是Fibonacci数
+列，一般习惯称之为费氏数列，例如以下： <br>
 
 
 
@@ -77,7 +77,7 @@ Fibonacci為1200年代的歐洲數學家，在他的著作中曾經提到：「�
 
 
 
-依說明，我們可以將費氏數列定義為以下： <br>
+依说明，我们可以将费氏数列定义为以下： <br>
 
 
 <div style="margin-left: 40px; font-weight: bold;">fn = fn-1 + fn-2　　&nbsp;&nbsp; if n &gt; 1<br>
@@ -90,26 +90,26 @@ fn = n　　　　　　 if n = 0, 1&nbsp;</div>
 
 
 
-費氏陣列的解法很多，基本上可以使用遞迴解，演算法最簡單，如下： <br>
+费氏阵列的解法很多，基本上可以使用递迴解，演算法最简单，如下： <br>
 
 
 
-<pre>Procedure FIB(N) [<br>    IF (N &lt; 0)  <br>        PRINT ("輸入錯誤"); <br><br>    IF (N = 0 OR N = 1) <br>        RETURN (N); <br>    ELSE <br>        RETURN ( FIB(N-1) + FIB(N-2) ); <br>]  <br></pre>
-
-
-
-<br>
-
-
-簡單，但是不實用，因為太慢了，在求每一個費氏數時，都會發生嚴重的重覆計算，也就是遞迴該行 ( FIB(N-1) + FIB(N-2)
-)，最差的big-o可以到2的n/2次方，畫張遞迴的樹狀圖就可以知道重覆計算的數有多少了。 <br>
+<pre>Procedure FIB(N) [<br>    IF (N &lt; 0)  <br>        PRINT ("输入错误"); <br><br>    IF (N = 0 OR N = 1) <br>        RETURN (N); <br>    ELSE <br>        RETURN ( FIB(N-1) + FIB(N-2) ); <br>]  <br></pre>
 
 
 
 <br>
 
 
-可以採取非遞迴的版本，可以將big(o)減至n，演算法如下： <br>
+简单，但是不实用，因为太慢了，在求每一个费氏数时，都会发生严重的重覆计算，也就是递迴该行 ( FIB(N-1) + FIB(N-2)
+)，最差的big-o可以到2的n/2次方，画张递迴的树状图就可以知道重覆计算的数有多少了。 <br>
+
+
+
+<br>
+
+
+可以採取非递迴的版本，可以将big(o)减至n，演算法如下： <br>
 
 
 
@@ -120,7 +120,7 @@ fn = n　　　　　　 if n = 0, 1&nbsp;</div>
 <br>
 
 
-若想要一次列出所有N之前的費氏數，則可以將for迴圈的部份改以陣列，也就是： <br>
+若想要一次列出所有N之前的费氏数，则可以将for迴圈的部份改以阵列，也就是： <br>
 
 
 
@@ -131,8 +131,8 @@ fn = n　　　　　　 if n = 0, 1&nbsp;</div>
 <br>
 
 
-費氏陣列並不是使用遞迴來解一定不好，事實上單就執行次數上來說，有一個使用遞迴的演算法可以更快
-(big(o)是以2為底的Logn值)，但是要使用到乘法運算，所以實際上要看所使用的機器而定。 <br>
+费氏阵列并不是使用递迴来解一定不好，事实上单就执行次数上来说，有一个使用递迴的演算法可以更快
+(big(o)是以2为底的Logn值)，但是要使用到乘法运算，所以实际上要看所使用的机器而定。 <br>
 
 
 
@@ -143,23 +143,23 @@ fn = n　　　　　　 if n = 0, 1&nbsp;</div>
 <br>
 
 
-您可以實際使用費氏數列來印證演算法中的那兩條公式，其中f1**2表示f1的平方；若將遞迴的樹狀圖畫出來，就像這樣：<br>
+您可以实际使用费氏数列来印证演算法中的那两条公式，其中f1**2表示f1的平方；若将递迴的树状图画出来，就像这样：<br>
 
 
-<div style="text-align: center;"><img style="width: 399px; height: 178px;" alt="費式數列" title="費式數列" src="images/fibonacciNumber-1.jpg"></div>
+<div style="text-align: center;"><img style="width: 399px; height: 178px;" alt="费式数列" title="费式数列" src="images/fibonacciNumber-1.jpg"></div>
 
 
 <br>
 
 
-另外費氏數列還有公式解，導證方式就不提了：<br>
+另外费氏数列还有公式解，导证方式就不提了：<br>
 
 
-<div style="text-align: center;"><img style="width: 320px; height: 53px;" alt="費式數列" title="費式數列" src="images/fibonacciNumber-2.jpg"></div>
+<div style="text-align: center;"><img style="width: 320px; height: 53px;" alt="费式数列" title="费式数列" src="images/fibonacciNumber-2.jpg"></div>
 
 
 
-您說，如果免子不只生一隻小免子的話怎麼辦？像這種問題，我們可以將費氏數列加以擴充，稱之為擴充費氏數列： <br>
+您说，如果免子不只生一隻小免子的话怎麽办？像这种问题，我们可以将费氏数列加以扩充，称之为扩充费氏数列： <br>
 
 
 <div style="margin-left: 40px; font-weight: bold;">fn = X * fn-1 + Y * fn-2　　 &nbsp; &nbsp;if n &gt; 1<br>
@@ -174,16 +174,16 @@ fn = 1　　　　　　　　　&nbsp; if n = 0, 1 <br>
 <br>
 
 
-當X、Y等於1時，自然就是一般的費氏數列了。 <br>
+当X、Y等于1时，自然就是一般的费氏数列了。 <br>
 
 
 
 <br>
 
 
-想瞭解費氏數列與自然界神奇的關係，可以造訪這個 <a href="http://episte.math.ntu.edu.tw/articles/sm/sm_02_08_1/index.html">網頁<cite class="urllink"></cite></a>。
+想瞭解费氏数列与自然界神奇的关係，可以造访这个 <a href="http://episte.math.ntu.edu.tw/articles/sm/sm_02_08_1/index.html">网页<cite class="urllink"></cite></a>。
 
-<h2> 實作</h2>
+<h2> 实作</h2>
 
 
 
